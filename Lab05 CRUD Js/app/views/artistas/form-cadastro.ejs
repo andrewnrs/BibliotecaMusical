@@ -1,0 +1,41 @@
+<%- include ../layout/cabecalho.ejs %>
+
+<% if(errosValidacao) { %>
+<ul>
+  <% for(var i=0; i < errosValidacao.length; i++) {%>
+  <li>
+    <%= errosValidacao[i].msg %>
+  </li>
+  <%}%>
+      </ul>
+    <%}%>
+
+  <form action="/artistas" method="post">
+    <div class="form-row">
+
+      <% if(artista.id ) { %>
+      <input type="hidden" id="id" name="id" value="<%=artista.id%>">
+      <% } %>
+
+      <div class="form-group col-md-9">
+        <label for="nome">Nome</label>
+        <input class="form-control" type="text" id="nome" name="nome" value="<%=artista.nome%>"
+          placeholder="Informe o nome do Artista">
+      </div>
+
+      <div class="form-group col-md-3">
+        <label for="nacionalidade">Nacionalidade</label>
+        <input class="form-control" type="text" id="nacionalidade" name="nacionalidade"
+          value="<%=artista.nacionalidade%>" placeholder="Brasileiro">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="bio">Biografia</label>
+      <textarea class="form-control" cols="20" rows="10" id="bio" name="bio"
+        placeholder="Descreva as características do artista ou escreva sua biografia"><%=artista.bio%></textarea>
+    </div>
+
+    <button class="btn btn-primary" type="submit">Salvar</button>
+  </form>
+  <%- include ../layout/rodape.ejs %>

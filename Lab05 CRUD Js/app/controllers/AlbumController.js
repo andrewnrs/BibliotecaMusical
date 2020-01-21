@@ -1,0 +1,8 @@
+class AlbumController {
+
+    constructor() {
+
+    }
+
+    
+}

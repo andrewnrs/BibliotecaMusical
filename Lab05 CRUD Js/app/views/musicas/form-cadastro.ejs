@@ -1,0 +1,54 @@
+<%- include ../layout/cabecalho.ejs %>
+
+<% if(errosValidacao) { %>
+<ul>
+  <% for(var i=0; i < errosValidacao.length; i++) {%>
+  <li>
+    <%= errosValidacao[i].msg %>
+  </li>
+  <%}%>
+      </ul>
+    <%}%>
+
+  <script src="form-controle.js"></script>
+
+  <form action="/musicas" method="post">
+    <div class="form-row">
+
+      <% if(musica.id ) { %>
+      <input type="hidden" id="id" name="id" value="<%=musica.id%>">
+      <% } %>
+
+      <div class="form-group col-md-6">
+        <label for="nome">Nome</label>
+        <input class="form-control" type="text" id="nome" name="nome" value="<%=musica.nome%>"
+          placeholder="Informe o nome do Musica">
+      </div>
+
+      <div class="form-group col-md-3">
+        <label for="genero">Genero</label>
+        <input class="form-control" type="text" id="genero" name="genero" value="<%=musica.genero%>"
+          placeholder="Brasileiro">
+      </div>
+
+      <div class="form-group col-md-3">
+        <label for="duracao">Duracao</label>
+        <input class="form-control" type="text" id="duracao" name="duracao" value="<%=musica.duracao%>"
+          placeholder="5:00">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-5">
+        <label for="artistas">Artista</label>
+        <input class="form-control" type="search" id="artistas">
+        <button class="btn btn-secondary" type="button" onclick="test()"> Add </button>
+      </div>
+    </div>
+
+
+    <button class="btn btn-primary" type="submit">Salvar</button>
+  </form>
+
+
+  <%- include ../layout/rodape.ejs %>
